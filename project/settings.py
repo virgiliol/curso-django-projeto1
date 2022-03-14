@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
+import os
 
 from pathlib import Path
 
@@ -20,10 +21,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-wlhkr6oxv$3te#9&=f1gzp2x4d)t964@mzx&5*k@@n!n3vqv2w' # noqa
+SECRET_KEY = os.environ.get('SECRET_KEY', 'INSECURE') # noqa
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True if os.environ.get('DEBUG') == '1' else False
 
 ALLOWED_HOSTS = ['*']
 
