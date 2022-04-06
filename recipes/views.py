@@ -8,6 +8,7 @@ from recipes.models import Recipe
 
 PER_PAGE = int(os.environ.get('PER_PAGE', 6))
 
+
 def home(request):
     recipes = Recipe.objects.filter(
         is_published=True,
